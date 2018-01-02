@@ -13,23 +13,43 @@
         android:text="Signout"
         tools:layout_editor_absoluteX="256dp"
         tools:layout_editor_absoluteY="447dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="265dp" />
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/upcomingbutton"
+        android:layout_toEndOf="@+id/upcomingbutton" />
 
     <Button
         android:id="@+id/votingbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Voting"
+        android:layout_marginBottom="79dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_above="@+id/upcomingbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/pastawardbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Past"
+        android:layout_alignBaseline="@+id/votingbutton"
+        android:layout_alignBottom="@+id/votingbutton"
+        android:layout_alignLeft="@+id/signoutbutton"
+        android:layout_alignStart="@+id/signoutbutton" />
+
+    <Button
+        android:id="@+id/upcomingbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming"
         android:layout_alignBaseline="@+id/signoutbutton"
         android:layout_alignBottom="@+id/signoutbutton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="69dp"
-        android:layout_marginStart="69dp"
-        android:text="Voting" />
+        android:layout_alignLeft="@+id/votingbutton"
+        android:layout_alignStart="@+id/votingbutton" />
 
 </RelativeLayout>

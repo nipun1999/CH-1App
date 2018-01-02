@@ -124,6 +124,8 @@ public class Votingmain extends AppCompatActivity {
                                 votecount = dataSnapshot.child(post_key).getValue(Integer.class);
                                 votecountnew = votecount + 1;
                                 mdatabasevotecount.child(post_key).setValue(votecountnew);
+                                Toast.makeText(Votingmain.this,
+                                        "Thank You for voting we love you", Toast.LENGTH_LONG).show();
 
 
 

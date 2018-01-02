@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private  FirebaseAuth.AuthStateListener mAuthstatelistener;
-    private Button signout,voting;
+    private Button signout,voting,pastaward,upcomingaward;
     private DatabaseReference mdatabasevotingstatus;
 
 
@@ -33,6 +33,10 @@ public class Home extends AppCompatActivity {
 
         signout = (Button)(findViewById(R.id.signoutbutton));
         voting = (Button)(findViewById(R.id.votingbutton));
+        pastaward = (Button)(findViewById(R.id.pastawardbutton));
+        upcomingaward = (Button)(findViewById(R.id.upcomingbutton));
+
+
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -87,6 +91,29 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+
+        pastaward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent home = new Intent(Home.this,PastAwards.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
+            }
+        });
+
+
+        upcomingaward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent home = new Intent(Home.this,UpcomingAwards.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
             }
         });
 

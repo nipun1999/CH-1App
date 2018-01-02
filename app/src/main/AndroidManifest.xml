@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Login" />
-        <activity android:name=".Votingmain"></activity>
+        <activity android:name=".Votingmain" />
+        <activity android:name=".PastAwards" />
+        <activity android:name=".UpcomingAwards"></activity>
     </application>
 
 </manifest>
