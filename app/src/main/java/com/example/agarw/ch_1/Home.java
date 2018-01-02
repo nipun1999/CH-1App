@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,7 @@ public class Home extends AppCompatActivity {
     private  FirebaseAuth.AuthStateListener mAuthstatelistener;
     private Button signout,voting,pastaward,upcomingaward;
     private DatabaseReference mdatabasevotingstatus;
+    private boolean verify = false;
 
 
 
@@ -44,16 +46,19 @@ public class Home extends AppCompatActivity {
 
 
 
-
+        final FirebaseUser user = mAuth.getCurrentUser();
 
 
         mAuthstatelistener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
+                if(firebaseAuth.getCurrentUser() == null || user.isEmailVerified() == verify){
                     Intent home = new Intent(Home.this,Login.class);
                     home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(home);
+
+
+
                 }
 
 

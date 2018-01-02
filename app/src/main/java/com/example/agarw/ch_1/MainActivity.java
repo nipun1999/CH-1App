@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
 
         mdatabaseref = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -78,9 +81,39 @@ public class MainActivity extends AppCompatActivity {
                        DatabaseReference currentuser =  mdatabaseref.child(user_id);
                         currentuser.child("name").setValue(namevalue);
                         currentuser.child("room no").setValue(roomvalue);
+
+                        final FirebaseUser user = mAuth.getCurrentUser();
+
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                if(task.isSuccessful()){
+
+                                    Toast.makeText(MainActivity.this,
+                                            "Verification email sent to " + user.getEmail() + " Please verify it, to proceed further",
+                                            Toast.LENGTH_SHORT).show();
+                                }else{
+
+                                    Toast.makeText(MainActivity.this,
+                                            "Failed to send verification email id. Please try again", Toast.LENGTH_LONG).show();
+
+                                }
+
+                            }
+                        });
+
+
+
                         Intent home = new Intent(MainActivity.this,Home.class);
                         home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(home);
+
+
+
+
+
+
 
 
 
