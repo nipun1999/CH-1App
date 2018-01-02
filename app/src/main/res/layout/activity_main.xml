@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.agarw.ch_1.MainActivity">
+
+    <EditText
+        android:id="@+id/emailedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameedit"
+        android:layout_alignStart="@+id/nameedit"
+        android:layout_below="@+id/nameedit"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/passwordedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailedit"
+        android:layout_alignStart="@+id/emailedit"
+        android:layout_below="@+id/emailedit"
+        android:layout_marginTop="41dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/nameedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/rooomedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordedit"
+        android:layout_alignStart="@+id/passwordedit"
+        android:layout_below="@+id/passwordedit"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="Room No"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/registerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"
+        android:text="Register" />
+
+</RelativeLayout>
