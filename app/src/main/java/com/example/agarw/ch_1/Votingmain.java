@@ -11,11 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -24,7 +28,10 @@ public class Votingmain extends AppCompatActivity {
     private RecyclerView mvotinglist;
     private DatabaseReference mdatabase;
     private DatabaseReference mdatabasevote;
+    private DatabaseReference mdatabasevotecount;
     private FirebaseAuth mAuth;
+    private int votecount;
+    private int votecountnew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class Votingmain extends AppCompatActivity {
         mvotinglist.setHasFixedSize(true);
         mvotinglist.setLayoutManager(new LinearLayoutManager(this));
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Voting Options");
+        mdatabasevotecount = FirebaseDatabase.getInstance().getReference().child("Voting Count");
         mdatabase.keepSynced(true);
         mdatabasevote = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -108,6 +116,34 @@ public class Votingmain extends AppCompatActivity {
                         Intent home = new Intent(Votingmain.this,Home.class);
                         home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(home);
+
+                        mdatabasevotecount.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                votecount = dataSnapshot.child(post_key).getValue(Integer.class);
+                                votecountnew = votecount + 1;
+                                mdatabasevotecount.child(post_key).setValue(votecountnew);
+
+
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
                     }
                 });
 
