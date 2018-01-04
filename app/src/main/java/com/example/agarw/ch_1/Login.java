@@ -86,6 +86,10 @@ public class Login extends AppCompatActivity {
                 }
             });
 
+        }else{
+            Toast.makeText(Login.this,
+                    "Please, fill all the fields carefully", Toast.LENGTH_LONG).show();
+            mprogress.dismiss();
         }
     }
 

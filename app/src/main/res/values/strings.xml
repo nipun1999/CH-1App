@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CH-1</string>
+    <string name="country_prompt">Problem related to</string>
+
+    <string-array name="country_arrays">
+        <item>Hostel Representative</item>
+        <item>Mess Representative</item>
+        <item>Netowrk Representative</item>
+
+    </string-array>
 </resources>

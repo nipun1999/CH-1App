@@ -21,9 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private  FirebaseAuth.AuthStateListener mAuthstatelistener;
-    private Button signout,voting,pastaward,upcomingaward;
+    private Button signout,voting,pastaward,upcomingaward,complaint;
     private DatabaseReference mdatabasevotingstatus;
     private boolean verify = false;
+  // private boolean emailVerified = true;
 
 
 
@@ -37,6 +38,7 @@ public class Home extends AppCompatActivity {
         voting = (Button)(findViewById(R.id.votingbutton));
         pastaward = (Button)(findViewById(R.id.pastawardbutton));
         upcomingaward = (Button)(findViewById(R.id.upcomingbutton));
+        complaint = (Button)(findViewById(R.id.complaintbutton));
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -46,20 +48,39 @@ public class Home extends AppCompatActivity {
 
 
 
+
         final FirebaseUser user = mAuth.getCurrentUser();
+         // emailVerified = user.isEmailVerified();
 
 
         mAuthstatelistener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null || user.isEmailVerified() == verify){
+                if(firebaseAuth.getCurrentUser() == null){
+
+
                     Intent home = new Intent(Home.this,Login.class);
                     home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(home);
 
 
 
+
+
                 }
+
+              /**  if(user!=null &&  emailVerified == false){
+                    Intent home1 = new Intent(Home.this,Login.class);
+                    home1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(home1);
+                    Toast.makeText(Home.this,
+                            "Please verify your email first", Toast.LENGTH_SHORT).show();
+
+                } **/
+
+
+
+
 
 
 
@@ -116,6 +137,17 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent home = new Intent(Home.this,UpcomingAwards.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
+            }
+        });
+
+        complaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent home = new Intent(Home.this,ComplaintPortal.class);
                 home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(home);
 

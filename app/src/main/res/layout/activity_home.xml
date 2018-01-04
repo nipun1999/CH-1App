@@ -52,4 +52,34 @@
         android:layout_alignLeft="@+id/votingbutton"
         android:layout_alignStart="@+id/votingbutton" />
 
+    <Button
+        android:id="@+id/complaintbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Post Complaint"
+        android:layout_below="@+id/upcomingbutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/viewcomplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Complaint"
+        android:layout_alignBaseline="@+id/complaintbutton"
+        android:layout_alignBottom="@+id/complaintbutton"
+        android:layout_alignRight="@+id/votingbutton"
+        android:layout_alignEnd="@+id/votingbutton" />
+
+    <Button
+        android:id="@+id/sportsbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/votingbutton"
+        android:layout_alignEnd="@+id/votingbutton"
+        android:layout_alignRight="@+id/votingbutton"
+        android:layout_marginBottom="40dp"
+        android:text="Sports" />
+
 </RelativeLayout>

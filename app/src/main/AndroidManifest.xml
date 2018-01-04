@@ -22,7 +22,8 @@
         <activity android:name=".Login" />
         <activity android:name=".Votingmain" />
         <activity android:name=".PastAwards" />
-        <activity android:name=".UpcomingAwards"></activity>
+        <activity android:name=".UpcomingAwards" />
+        <activity android:name=".ComplaintPortal"></activity>
     </application>
 
 </manifest>
