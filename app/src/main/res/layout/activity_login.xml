@@ -4,45 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/wallpaperandroid"
     tools:context="com.example.agarw.ch_1.Login">
 
     <EditText
         android:id="@+id/emailtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/passwordtext"
+
+        android:layout_alignStart="@+id/passwordtext"
+        android:layout_below="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/edittextrounded"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:gravity="center"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:padding="5dip"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="?android:attr/colorControlHighlight"
+        android:textColorHint="?android:attr/colorButtonNormal"
+        android:textColorLink="@color/cardview_dark_background"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/passwordtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailtext"
-        android:layout_alignStart="@+id/emailtext"
-        android:layout_below="@+id/emailtext"
-        android:layout_marginTop="50dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/edittextrounded"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:gravity="center"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="?android:attr/colorButtonNormal"
+        android:textSize="24sp"
+        android:layout_below="@+id/emailtext"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordtext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/roundbutton"
         android:text="Login"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/registerbutton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:text="Create Account" />
+        android:layout_marginTop="32dp"
+        android:text="Create Account"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:layout_below="@+id/loginbutton"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif"
+        android:text="CH-1"
+        android:textAllCaps="false"
+        android:textColor="@color/cardview_light_background"
+        android:textIsSelectable="false"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forget Password"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_alignBaseline="@+id/registerbutton"
+        android:layout_alignBottom="@+id/registerbutton"
+        android:layout_alignLeft="@+id/passwordtext"
+        android:layout_alignStart="@+id/passwordtext" />
 </RelativeLayout>

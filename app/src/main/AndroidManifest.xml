@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +19,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Login" />
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Votingmain" />
         <activity android:name=".PastAwards" />
         <activity android:name=".UpcomingAwards" />
-        <activity android:name=".ComplaintPortal"></activity>
+        <activity android:name=".ComplaintPortal" />
+        <activity android:name=".Playroom" />
+        <activity android:name=".Awards" />
+        <activity android:name=".Complaints"></activity>
     </application>
 
 </manifest>

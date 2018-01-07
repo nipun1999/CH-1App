@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private  FirebaseAuth.AuthStateListener mAuthstatelistener;
-    private Button signout,voting,pastaward,upcomingaward,complaint;
+    private Button signout,voting,pastaward,upcomingaward,complaint,playroom,awards,complaintbutton;
     private DatabaseReference mdatabasevotingstatus;
     private boolean verify = false;
   // private boolean emailVerified = true;
@@ -34,83 +34,69 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        signout = (Button)(findViewById(R.id.signoutbutton));
-        voting = (Button)(findViewById(R.id.votingbutton));
-        pastaward = (Button)(findViewById(R.id.pastawardbutton));
-        upcomingaward = (Button)(findViewById(R.id.upcomingbutton));
-        complaint = (Button)(findViewById(R.id.complaintbutton));
-
+        signout = (Button) (findViewById(R.id.signoutbutton));
+        awards = (Button) (findViewById(R.id.button16));
+        complaintbutton = (Button) (findViewById(R.id.complaintbutton));
 
         mAuth = FirebaseAuth.getInstance();
 
 
-
-
-
-
-
         final FirebaseUser user = mAuth.getCurrentUser();
-         // emailVerified = user.isEmailVerified();
+        // emailVerified = user.isEmailVerified();
 
 
         mAuthstatelistener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
 
 
-                    Intent home = new Intent(Home.this,Login.class);
+                    Intent home = new Intent(Home.this, Login.class);
                     home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(home);
 
 
-
-
-
                 }
 
-              /**  if(user!=null &&  emailVerified == false){
-                    Intent home1 = new Intent(Home.this,Login.class);
-                    home1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(home1);
-                    Toast.makeText(Home.this,
-                            "Please verify your email first", Toast.LENGTH_SHORT).show();
+                /**  if(user!=null &&  emailVerified == false){
+                 Intent home1 = new Intent(Home.this,Login.class);
+                 home1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                 startActivity(home1);
+                 Toast.makeText(Home.this,
+                 "Please verify your email first", Toast.LENGTH_SHORT).show();
 
-                } **/
-
-
-
-
-
-
-
+                 } **/
 
 
             }
 
 
-
-
         };
 
-
-
-
-
-        mAuth.addAuthStateListener(mAuthstatelistener);
-
-        voting.setOnClickListener(new View.OnClickListener() {
+        complaintbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                checkuservote();
-
-
+                Intent home = new Intent(Home.this, Complaints.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
 
             }
         });
 
 
+        mAuth.addAuthStateListener(mAuthstatelistener);
+
+        awards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent home = new Intent(Home.this, Awards.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
+            }
+        });
 
 
         signout.setOnClickListener(new View.OnClickListener() {
@@ -119,95 +105,6 @@ public class Home extends AppCompatActivity {
                 logout();
             }
         });
-
-        pastaward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent home = new Intent(Home.this,PastAwards.class);
-                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-
-            }
-        });
-
-
-        upcomingaward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent home = new Intent(Home.this,UpcomingAwards.class);
-                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-
-            }
-        });
-
-        complaint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent home = new Intent(Home.this,ComplaintPortal.class);
-                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-    private void checkuservote() {
-
-        String user_id = mAuth.getCurrentUser().getUid();
-
-        mdatabasevotingstatus = FirebaseDatabase.getInstance().getReference().child("Voting status").child(user_id);
-
-
-        mdatabasevotingstatus.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-                if(value!= null && value.equals("true")){
-                    Toast.makeText(Home.this,
-                            "You have already voted", Toast.LENGTH_SHORT).show();
-
-
-                }else{
-
-                    Intent home = new Intent(Home.this,Votingmain.class);
-                    home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(home);
-
-
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                Toast.makeText(Home.this,
-                        "Some error occured, please try again later", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
-
 
 
     }

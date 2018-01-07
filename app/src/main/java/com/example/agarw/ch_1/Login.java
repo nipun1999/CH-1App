@@ -31,12 +31,17 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         emailtext = (EditText)(findViewById(R.id.emailtext));
         passwordtext = (EditText)(findViewById(R.id.passwordtext));
         login = (Button)(findViewById(R.id.loginbutton));
         mAuth = FirebaseAuth.getInstance();
         mprogress = new ProgressDialog(this);
         registerpage = (Button)(findViewById(R.id.registerbutton));
+
+       // emailtext.setCursorVisible(false);
+        //passwordtext.setCursorVisible(false);
 
         registerpage.setOnClickListener(new View.OnClickListener() {
             @Override

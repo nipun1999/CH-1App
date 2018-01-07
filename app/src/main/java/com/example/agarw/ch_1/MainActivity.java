@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         mdatabaseref = FirebaseDatabase.getInstance().getReference().child("Users");
 
+        name.requestFocus();
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
